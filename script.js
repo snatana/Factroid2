@@ -1,73 +1,59 @@
-// Theme toggle
-let isDark = false, toggling = true;
-const interval = setInterval(() => {
-  if (!toggling) return;
-  document.documentElement.style.setProperty(
-    '--bg-color', isDark ? '#ffffff' : '#000000'
-  );
-  document.documentElement.style.setProperty(
-    '--text-color', isDark ? '#000000' : '#ffffff'
-  );
-  document.documentElement.style.setProperty(
-    '--button-bg', isDark ? '#ffffff' : '#000000'
-  );
-  document.documentElement.style.setProperty(
-    '--button-text', isDark ? '#000000' : '#ffffff'
-  );
-  document.documentElement.style.setProperty(
-    '--button-border', isDark ? '#000000' : '#ffffff'
-  );
-  document.documentElement.style.setProperty(
-    '--hover-bg', isDark ? '#000000' : '#ffffff'
-  );
-  document.documentElement.style.setProperty(
-    '--hover-text', isDark ? '#ffffff' : '#000000'
-  );
+let isDark = false;
+let isToggling = true;
+let toggleInterval = setInterval(toggleTheme, 3000);
+
+function toggleTheme() {
+  if (!isToggling) return;
+  const root = document.documentElement;
+
+  if (!isDark) {
+    root.style.setProperty('--bg-color', '#000');
+    root.style.setProperty('--text-color', '#fff');
+    root.style.setProperty('--button-bg', '#000');
+    root.style.setProperty('--button-text', '#fff');
+    root.style.setProperty('--button-border', '#fff');
+    root.style.setProperty('--hover-bg', '#fff');
+    root.style.setProperty('--hover-text', '#000');
+  } else {
+    root.style.setProperty('--bg-color', '#fff');
+    root.style.setProperty('--text-color', '#000');
+    root.style.setProperty('--button-bg', '#fff');
+    root.style.setProperty('--button-text', '#000');
+    root.style.setProperty('--button-border', '#000');
+    root.style.setProperty('--hover-bg', '#000');
+    root.style.setProperty('--hover-text', '#fff');
+  }
+
   isDark = !isDark;
-}, 2000);
+}
 
-document.getElementById('stopToggleButton')
-  .addEventListener('click', () => toggling = false);
-
-// Show/Hide Share Review
-const shareBtn = document.getElementById('shareReviewBtn');
-const formDiv  = document.getElementById('share-review-form');
-const homeDiv  = document.getElementById('main-content');
-const bottom   = document.querySelector('.bottom-sections');
-const themeCtl = document.querySelector('.theme-control');
-const goHome   = document.getElementById('goHomeBtn');
-
-shareBtn.addEventListener('click', () => {
-  formDiv.classList.add('active');
-  homeDiv.style.display = 'none';
-  bottom.style.display = 'none';
-  themeCtl.style.display = 'none';
+document.getElementById('shareReview').addEventListener('click', () => {
+  document.getElementById('main-section').classList.add('hidden');
+  document.getElementById('share-review-section').classList.remove('hidden');
 });
 
-goHome.addEventListener('click', () => {
-  formDiv.classList.remove('active');
-  homeDiv.style.display = 'block';
-  bottom.style.display = 'flex';
-  themeCtl.style.display = 'block';
+document.getElementById('goHome').addEventListener('click', () => {
+  document.getElementById('main-section').classList.remove('hidden');
+  document.getElementById('share-review-section').classList.add('hidden');
 });
 
-// Populate dropdowns with sample data
-const companies = ['Apple','Google','Amazon','Microsoft','Samsung'];
-const products  = ['Electronics','Apparel','Home Goods','Sports'];
+function addToDropdown(type) {
+  const input = document.getElementById(`${type}Input`);
+  const dropdown = document.getElementById(`${type}Dropdown`);
+  const value = input.value.trim();
+  if (value !== '') {
+    const option = document.createElement('option');
+    option.textContent = value;
+    option.value = value;
+    dropdown.appendChild(option);
+    input.value = '';
+  }
+}
 
-companies.forEach(c => {
-  let opt = new Option(c, c);
-  document.getElementById('companySelect').add(opt);
-});
-products.forEach(p => {
-  let opt = new Option(p, p);
-  document.getElementById('productSelect').add(opt);
-});
-
-// Submission handler
-document.getElementById('reviewForm').addEventListener('submit', e => {
-  e.preventDefault();
-  document.getElementById('confirmationMessage').textContent =
-    'Factroid Team will verify your information within 5 working days. Upon satisfaction, your review will be uploaded.';
-  document.getElementById('confirmationMessage').style.display = 'block';
-});
+function submitReview() {
+  if (!document.getElementById('acceptance').checked) {
+    alert('You must accept the statement before submitting.');
+    return;
+  }
+  document.getElementById('submissionMessage').classList.remove('hidden');
+}

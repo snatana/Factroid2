@@ -1,4 +1,3 @@
-/* Base & Theme */
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
@@ -7,99 +6,109 @@
   --button-border: #000000;
   --hover-bg: #000000;
   --hover-text: #ffffff;
-  transition: all 1.5s ease;
-}
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--bg-color);
-  color: var(--text-color);
-  transition: background 1.5s ease, color 1.5s ease;
 }
 
-/* Header */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  transition: all 1.5s ease;
+}
+
 .header-bar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+  align-items: flex-start;
+  padding: 20px 40px;
 }
-.branding { display: flex; align-items: center; gap: 10px; }
-.logo { width: 40px; }
-.punchline { font-style: italic; }
 
-/* Buttons & Containers */
-.main-button, .stop-button, .home-button, .submit-button, .feedback-button {
-  padding: 8px 16px;
+.logo {
+  width: 50px;
+}
+
+.punchline {
+  font-style: italic;
+}
+
+.login-button,
+.main-button,
+.feedback-button,
+.home-button,
+.submit-button {
+  padding: 10px 16px;
   border: 2px solid var(--button-border);
-  background: var(--button-bg);
+  background-color: var(--button-bg);
   color: var(--button-text);
   cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  transition: all 0.5s ease;
   margin: 5px;
 }
-.main-button:hover, .stop-button:hover, .home-button:hover,
-.submit-button:hover, .feedback-button:hover {
-  background: var(--hover-bg);
+
+button:hover {
+  background-color: var(--hover-bg);
   color: var(--hover-text);
 }
 
-/* Home Section */
-#main-content { text-align: center; padding: 40px 20px; }
-.buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
-.bottom-sections { display: flex; justify-content: space-around; flex-wrap: wrap; padding: 20px; }
+.button-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.bottom-sections {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
 .floating-box {
-  background: var(--bg-color);
-  border: 1px solid var(--button-border);
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 300px;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 10px;
+  width: 300px;
+  margin: 10px;
 }
 
-/* Share Review Full-Screen Form */
-#share-review-form {
+.input-group {
+  margin: 15px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-group input[type="text"],
+.input-group select,
+.input-group textarea {
+  flex: 1 1 200px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  width: 90%;
+  height: 120px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.hidden {
   display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  overflow-y: auto;
-  background: var(--bg-color);
-  color: var(--text-color);
-  padding: 30px;
-  box-sizing: border-box;
-  z-index: 1000;
 }
-#share-review-form.active { display: block; }
 
-/* Form Layout */
-.review-group {
-  margin-bottom: 15px;
-}
-.review-group label { display: block; margin-bottom: 4px; font-weight: bold; }
-.review-group input[type="text"],
-.review-group select,
-.review-group textarea {
-  width: 100%; max-width: 400px;
-  padding: 8px;
-  border: 1px solid var(--button-border);
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-.review-group textarea { height: 120px; resize: vertical; }
-
-/* Dual Input */
-.dual-input {
-  display: flex; gap: 10px; flex-wrap: wrap;
-}
-.dual-input select,
-.dual-input input[type="text"] { flex: 1; min-width: 140px; }
-
-/* Submission Message */
-.submit-message { margin-top: 20px; font-weight: bold; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .buttons, .bottom-sections { flex-direction: column; align-items: center; }
-  .floating-box { width: 90%; }
-  .dual-input { flex-direction: column; }
+.success-message {
+  margin: 20px;
+  color: green;
+  font-weight: bold;
 }

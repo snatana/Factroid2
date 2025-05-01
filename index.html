@@ -10,25 +10,25 @@
   <!-- Header -->
   <header class="header-bar">
     <div class="branding">
-      <img src="logo.png" alt="Company Logo" class="logo" />
-      <div class="punchline"><em>Transparency. Trust. Truth.</em></div>
+      <img src="logo.png" alt="Logo" class="logo" />
+      <div class="punchline">Transparency. Trust. Truth.</div>
     </div>
-    <button class="stop-button" id="stopToggleButton">Stop Theme</button>
+    <button class="login-button">Login</button>
   </header>
 
-  <!-- Main Home Content -->
-  <div id="main-content">
+  <!-- Main Section -->
+  <main id="main-section">
     <section class="button-section">
       <h2>What would you like to do?</h2>
       <div class="buttons">
-        <button class="main-button">Check Reviews</button>
-        <button class="main-button" id="shareReviewBtn">Share Review</button>
-        <button class="main-button">Resolve Review</button>
+        <button class="main-button" id="checkReviews">Check Reviews</button>
+        <button class="main-button" id="shareReview">Share Review</button>
+        <button class="main-button" id="resolveReview">Resolve Review</button>
       </div>
     </section>
 
     <div class="bottom-sections">
-      <section class="floating-box disclaimer">
+      <section class="disclaimer floating-box">
         <h3>Disclaimer</h3>
         <ul>
           <li>Your identity remains confidential.</li>
@@ -37,98 +37,94 @@
           <li>Misuse may lead to suspension.</li>
         </ul>
       </section>
-
-      <section class="floating-box feedback">
+      <section class="feedback floating-box">
         <h3>Help Improve</h3>
         <p>Have suggestions or found issues?</p>
         <button class="feedback-button">Share Feedback</button>
       </section>
     </div>
-  </div>
+  </main>
 
-  <!-- Full-Screen Share Review Form -->
-  <div id="share-review-form">
-    <button class="home-button" id="goHomeBtn">Home</button>
-    <h2>Share a Review</h2>
-    <form id="reviewForm">
-      <!-- Product -->
-      <div class="review-group">
-        <label for="productSelect">Product:</label>
-        <div class="dual-input">
-          <select id="productSelect">
-            <option value="">Select Product</option>
-            <!-- populated via script -->
-          </select>
-          <input type="text" id="newProduct" placeholder="Or add new product" />
-        </div>
-      </div>
-      <!-- Service -->
-      <div class="review-group">
-        <label for="serviceSelect">Service:</label>
-        <div class="dual-input">
-          <select id="serviceSelect">
-            <option value="">Select Service</option>
-          </select>
-          <input type="text" id="newService" placeholder="Or add new service" />
-        </div>
-      </div>
-      <!-- Company -->
-      <div class="review-group">
-        <label for="companySelect">Company:</label>
-        <div class="dual-input">
-          <select id="companySelect">
-            <option value="">Select Company</option>
-          </select>
-          <input type="text" id="newCompany" placeholder="Or add new company" />
-        </div>
-      </div>
-      <!-- Individual -->
-      <div class="review-group">
-        <label for="individualSelect">Individual:</label>
-        <div class="dual-input">
-          <select id="individualSelect">
-            <option value="">Select Individual</option>
-          </select>
-          <input type="text" id="newIndividual" placeholder="Or add new person" />
-        </div>
-      </div>
-      <!-- Subject -->
-      <div class="review-group">
-        <label for="subject">Subject (Max 9 words):</label>
-        <input type="text" id="subject" placeholder="Short description" />
-      </div>
-      <!-- Detailed Review -->
-      <div class="review-group">
-        <label for="details">Detailed Review (Max 1008 chars):</label>
-        <textarea id="details" placeholder="Write your review..."></textarea>
-      </div>
-      <!-- Uploads -->
-      <div class="review-group">
-        <label>Upload Document:</label>
-        <input type="file" accept=".pdf,.doc,.docx" />
-      </div>
-      <div class="review-group">
-        <label>Upload Audio:</label>
-        <input type="file" accept="audio/*" />
-      </div>
-      <div class="review-group">
-        <label>Upload Video:</label>
-        <input type="file" accept="video/*" />
-      </div>
-      <div class="review-group">
-        <label>Upload Image:</label>
-        <input type="file" accept="image/*" />
-      </div>
-      <!-- Acceptance -->
-      <div class="review-group">
-        <input type="checkbox" id="acceptance" required />
-        <label for="acceptance">I confirm all information is 100% true. If false, I agree to be blacklisted.</label>
-      </div>
-      <!-- Submit -->
-      <button type="submit" class="submit-button">Submit</button>
-      <p id="confirmationMessage" class="submit-message"></p>
-    </form>
-  </div>
+  <!-- Share Review Section -->
+  <section id="share-review-section" class="hidden">
+    <button class="home-button" id="goHome">← Home</button>
+    <h2>Share Your Review</h2>
+
+    <div class="input-group">
+      <label>Product:</label>
+      <select id="productDropdown">
+        <option value="">-- Select Product --</option>
+      </select>
+      <input type="text" id="productInput" placeholder="Enter new product" />
+      <button onclick="addToDropdown('product')">Add</button>
+    </div>
+
+    <div class="input-group">
+      <label>Service:</label>
+      <select id="serviceDropdown">
+        <option value="">-- Select Service --</option>
+      </select>
+      <input type="text" id="serviceInput" placeholder="Enter new service" />
+      <button onclick="addToDropdown('service')">Add</button>
+    </div>
+
+    <div class="input-group">
+      <label>Company:</label>
+      <select id="companyDropdown">
+        <option value="">-- Select Company --</option>
+      </select>
+      <input type="text" id="companyInput" placeholder="Enter new company" />
+      <button onclick="addToDropdown('company')">Add</button>
+    </div>
+
+    <div class="input-group">
+      <label>Individual:</label>
+      <select id="individualDropdown">
+        <option value="">-- Select Individual --</option>
+      </select>
+      <input type="text" id="individualInput" placeholder="Enter new individual" />
+      <button onclick="addToDropdown('individual')">Add</button>
+    </div>
+
+    <!-- Other Review Inputs -->
+    <div class="input-group">
+      <label>Subject / Short Description:</label>
+      <input type="text" maxlength="45" placeholder="Max 9 words" />
+    </div>
+
+    <div class="input-group">
+      <label>Review Content:</label>
+      <textarea maxlength="1008" placeholder="Write your review here..."></textarea>
+    </div>
+
+    <div class="input-group">
+      <label>Upload Document:</label>
+      <input type="file" accept=".pdf,.doc,.docx" />
+    </div>
+    <div class="input-group">
+      <label>Upload Audio:</label>
+      <input type="file" accept="audio/*" />
+    </div>
+    <div class="input-group">
+      <label>Upload Video:</label>
+      <input type="file" accept="video/*" />
+    </div>
+    <div class="input-group">
+      <label>Upload Image:</label>
+      <input type="file" accept="image/*" />
+    </div>
+
+    <div class="input-group checkbox-group">
+      <input type="checkbox" id="acceptance" />
+      <label for="acceptance">Acceptance Statement: I confirm the information and documents are 100% true. If found false, I accept being blacklisted.</label>
+    </div>
+
+    <button class="submit-button" onclick="submitReview()">Submit</button>
+
+    <div id="submissionMessage" class="hidden success-message">
+      Factroid Team will verify this information. It may take up to 5 working days before your review appears on the portal.
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
