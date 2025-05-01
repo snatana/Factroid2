@@ -7,50 +7,127 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header: Logo + Punchline + Login -->
+  <!-- Header -->
   <header class="header-bar">
     <div class="branding">
       <img src="logo.png" alt="Company Logo" class="logo" />
       <div class="punchline"><em>Transparency. Trust. Truth.</em></div>
     </div>
-    <button class="login-button">Login</button>
+    <button class="stop-button" id="stopToggleButton">Stop Theme</button>
   </header>
 
-  <!-- Main Section: Buttons -->
-  <div class="container">
+  <!-- Main Home Content -->
+  <div id="main-content">
     <section class="button-section">
       <h2>What would you like to do?</h2>
       <div class="buttons">
         <button class="main-button">Check Reviews</button>
-        <button class="main-button">Share Review</button>
+        <button class="main-button" id="shareReviewBtn">Share Review</button>
         <button class="main-button">Resolve Review</button>
       </div>
     </section>
+
+    <div class="bottom-sections">
+      <section class="floating-box disclaimer">
+        <h3>Disclaimer</h3>
+        <ul>
+          <li>Your identity remains confidential.</li>
+          <li>Post reviews anonymously or with name.</li>
+          <li>Details disclosed only with consent.</li>
+          <li>Misuse may lead to suspension.</li>
+        </ul>
+      </section>
+
+      <section class="floating-box feedback">
+        <h3>Help Improve</h3>
+        <p>Have suggestions or found issues?</p>
+        <button class="feedback-button">Share Feedback</button>
+      </section>
+    </div>
   </div>
 
-  <!-- Bottom Sections -->
-  <div class="bottom-sections">
-    <section class="disclaimer floating-box">
-      <h3>Disclaimer</h3>
-      <ul>
-        <li>Your identity remains confidential.</li>
-        <li>Post reviews anonymously or with name.</li>
-        <li>Details disclosed only with consent.</li>
-        <li>Misuse may lead to suspension.</li>
-      </ul>
-    </section>
-
-    <section class="feedback floating-box">
-      <h3>Help Improve</h3>
-      <p>Have suggestions or found issues?</p>
-      <button class="feedback-button">Share Feedback</button>
-    </section>
-  </div>
-
-  <!-- Theme Info and Control -->
-  <div class="theme-control">
-    <p>Portal Theme: Black and White</p>
-    <button id="stopToggleButton" class="stop-button">Stop the Color Change</button>
+  <!-- Full-Screen Share Review Form -->
+  <div id="share-review-form">
+    <button class="home-button" id="goHomeBtn">Home</button>
+    <h2>Share a Review</h2>
+    <form id="reviewForm">
+      <!-- Product -->
+      <div class="review-group">
+        <label for="productSelect">Product:</label>
+        <div class="dual-input">
+          <select id="productSelect">
+            <option value="">Select Product</option>
+            <!-- populated via script -->
+          </select>
+          <input type="text" id="newProduct" placeholder="Or add new product" />
+        </div>
+      </div>
+      <!-- Service -->
+      <div class="review-group">
+        <label for="serviceSelect">Service:</label>
+        <div class="dual-input">
+          <select id="serviceSelect">
+            <option value="">Select Service</option>
+          </select>
+          <input type="text" id="newService" placeholder="Or add new service" />
+        </div>
+      </div>
+      <!-- Company -->
+      <div class="review-group">
+        <label for="companySelect">Company:</label>
+        <div class="dual-input">
+          <select id="companySelect">
+            <option value="">Select Company</option>
+          </select>
+          <input type="text" id="newCompany" placeholder="Or add new company" />
+        </div>
+      </div>
+      <!-- Individual -->
+      <div class="review-group">
+        <label for="individualSelect">Individual:</label>
+        <div class="dual-input">
+          <select id="individualSelect">
+            <option value="">Select Individual</option>
+          </select>
+          <input type="text" id="newIndividual" placeholder="Or add new person" />
+        </div>
+      </div>
+      <!-- Subject -->
+      <div class="review-group">
+        <label for="subject">Subject (Max 9 words):</label>
+        <input type="text" id="subject" placeholder="Short description" />
+      </div>
+      <!-- Detailed Review -->
+      <div class="review-group">
+        <label for="details">Detailed Review (Max 1008 chars):</label>
+        <textarea id="details" placeholder="Write your review..."></textarea>
+      </div>
+      <!-- Uploads -->
+      <div class="review-group">
+        <label>Upload Document:</label>
+        <input type="file" accept=".pdf,.doc,.docx" />
+      </div>
+      <div class="review-group">
+        <label>Upload Audio:</label>
+        <input type="file" accept="audio/*" />
+      </div>
+      <div class="review-group">
+        <label>Upload Video:</label>
+        <input type="file" accept="video/*" />
+      </div>
+      <div class="review-group">
+        <label>Upload Image:</label>
+        <input type="file" accept="image/*" />
+      </div>
+      <!-- Acceptance -->
+      <div class="review-group">
+        <input type="checkbox" id="acceptance" required />
+        <label for="acceptance">I confirm all information is 100% true. If false, I agree to be blacklisted.</label>
+      </div>
+      <!-- Submit -->
+      <button type="submit" class="submit-button">Submit</button>
+      <p id="confirmationMessage" class="submit-message"></p>
+    </form>
   </div>
 
   <script src="script.js"></script>

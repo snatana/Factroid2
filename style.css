@@ -1,3 +1,4 @@
+/* Base & Theme */
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
@@ -8,221 +9,97 @@
   --hover-text: #ffffff;
   transition: all 1.5s ease;
 }
-
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
   margin: 0;
-  min-height: 100vh;
-  position: relative;
-  transition: background-color 1.5s ease, color 1.5s ease;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 1.5s ease, color 1.5s ease;
 }
 
+/* Header */
 .header-bar {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 20px 40px;
-  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
 }
+.branding { display: flex; align-items: center; gap: 10px; }
+.logo { width: 40px; }
+.punchline { font-style: italic; }
 
-.branding {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.logo {
-  width: 50px;
-  margin-bottom: 5px;
-}
-
-.punchline {
-  font-size: 1.1em;
-  font-style: italic;
-  margin-top: 0;
-}
-
-.login-button {
-  padding: 8px 18px;
-  border: 2px solid var(--button-border);
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  font-size: 0.9em;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 1.5s ease, color 1.5s ease, border-color 1.5s ease;
-}
-
-.login-button:hover {
-  background-color: var(--hover-bg);
-  color: var(--hover-text);
-}
-
-.container {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 40px;
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: background-color 1.5s ease, color 1.5s ease;
-}
-
-.button-section {
-  text-align: center;
-}
-
-.button-section h2 {
-  font-size: 1.3em;
-  margin-bottom: 20px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.main-button {
-  padding: 12px 24px;
-  font-size: 1em;
-  border: 2px solid var(--button-border);
-  border-radius: 10px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  cursor: pointer;
-  transition: background-color 1.5s ease, color 1.5s ease, border-color 1.5s ease;
-}
-
-.main-button:hover {
-  background-color: var(--hover-bg);
-  color: var(--hover-text);
-}
-
-.main-button:active {
-  transform: scale(0.97);
-}
-
-.bottom-sections {
-  position: fixed;
-  bottom: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 40px;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.floating-box {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border: 1px solid var(--button-border);
-  border-radius: 10px;
-  padding: 15px 20px;
-  width: 250px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-size: 0.85em;
-  transition: background-color 1.5s ease, color 1.5s ease, border-color 1.5s ease;
-  pointer-events: auto;
-}
-
-.disclaimer ul {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.disclaimer li {
-  margin-bottom: 6px;
-}
-
-.feedback-button {
-  margin-top: 10px;
+/* Buttons & Containers */
+.main-button, .stop-button, .home-button, .submit-button, .feedback-button {
   padding: 8px 16px;
-  font-size: 0.85em;
   border: 2px solid var(--button-border);
-  background-color: var(--button-bg);
+  background: var(--button-bg);
   color: var(--button-text);
-  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 1.5s ease, color 1.5s ease, border-color 1.5s ease;
+  transition: all 0.3s ease;
+  margin: 5px;
 }
-
-.feedback-button:hover {
-  background-color: var(--hover-bg);
+.main-button:hover, .stop-button:hover, .home-button:hover,
+.submit-button:hover, .feedback-button:hover {
+  background: var(--hover-bg);
   color: var(--hover-text);
 }
 
-.theme-control {
+/* Home Section */
+#main-content { text-align: center; padding: 40px 20px; }
+.buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+.bottom-sections { display: flex; justify-content: space-around; flex-wrap: wrap; padding: 20px; }
+.floating-box {
+  background: var(--bg-color);
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 300px;
+}
+
+/* Share Review Full-Screen Form */
+#share-review-form {
+  display: none;
   position: fixed;
-  bottom: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 0.85em;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow-y: auto;
+  background: var(--bg-color);
   color: var(--text-color);
-  transition: color 1.5s ease;
-  pointer-events: auto;
+  padding: 30px;
+  box-sizing: border-box;
+  z-index: 1000;
 }
+#share-review-form.active { display: block; }
 
-.stop-button {
-  margin-top: 6px;
-  padding: 6px 16px;
-  font-size: 0.85em;
-  border: 2px solid var(--button-border);
-  background-color: var(--button-bg);
-  color: var(--button-text);
+/* Form Layout */
+.review-group {
+  margin-bottom: 15px;
+}
+.review-group label { display: block; margin-bottom: 4px; font-weight: bold; }
+.review-group input[type="text"],
+.review-group select,
+.review-group textarea {
+  width: 100%; max-width: 400px;
+  padding: 8px;
+  border: 1px solid var(--button-border);
   border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 1.5s ease, color 1.5s ease, border-color 1.5s ease;
+  box-sizing: border-box;
 }
+.review-group textarea { height: 120px; resize: vertical; }
 
-.stop-button:hover {
-  background-color: var(--hover-bg);
-  color: var(--hover-text);
+/* Dual Input */
+.dual-input {
+  display: flex; gap: 10px; flex-wrap: wrap;
 }
+.dual-input select,
+.dual-input input[type="text"] { flex: 1; min-width: 140px; }
 
-/* MOBILE RESPONSIVE STYLES */
+/* Submission Message */
+.submit-message { margin-top: 20px; font-weight: bold; }
+
+/* Responsive */
 @media (max-width: 768px) {
-  .header-bar {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px;
-  }
-
-  .bottom-sections {
-    flex-direction: column;
-    align-items: center;
-    bottom: auto;
-    top: auto;
-    position: relative;
-    margin-top: 20px;
-    padding: 20px;
-  }
-
-  .floating-box {
-    width: 90%;
-    margin-bottom: 20px;
-  }
-
-  .theme-control {
-    position: relative;
-    transform: none;
-    left: auto;
-    margin-bottom: 20px;
-  }
-
-  .container {
-    padding: 20px;
-    margin: 20px;
-  }
-
-  .buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
+  .buttons, .bottom-sections { flex-direction: column; align-items: center; }
+  .floating-box { width: 90%; }
+  .dual-input { flex-direction: column; }
 }
