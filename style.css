@@ -1,4 +1,4 @@
-:root { 
+:root {
   --bg-color: #ffffff;
   --text-color: #000000;
   --button-bg: #ffffff;
@@ -24,7 +24,7 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   padding: 20px 40px;
-  transition: background-color 1.5s ease, color 1.5s ease;
+  flex-wrap: wrap;
 }
 
 .branding {
@@ -114,6 +114,7 @@ body {
   justify-content: space-between;
   padding: 0 40px;
   pointer-events: none;
+  z-index: 10;
 }
 
 .floating-box {
@@ -123,7 +124,7 @@ body {
   border-radius: 10px;
   padding: 15px 20px;
   width: 250px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   font-size: 0.85em;
   transition: background-color 1.5s ease, color 1.5s ease, border-color 1.5s ease;
   pointer-events: auto;
@@ -157,7 +158,7 @@ body {
 
 .theme-control {
   position: fixed;
-  bottom: 20px;
+  bottom: 90px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -184,23 +185,44 @@ body {
   color: var(--hover-text);
 }
 
-/* Mobile Adjustments */
-@media screen and (max-width: 600px) {
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
   .header-bar {
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .bottom-sections {
+    flex-direction: column;
+    align-items: center;
+    bottom: auto;
+    top: auto;
+    position: relative;
+    margin-top: 20px;
+    padding: 20px;
+  }
+
+  .floating-box {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .theme-control {
+    position: relative;
+    transform: none;
+    left: auto;
+    margin-bottom: 20px;
   }
 
   .container {
     padding: 20px;
+    margin: 20px;
   }
 
   .buttons {
     flex-direction: column;
     gap: 10px;
-  }
-
-  .floating-box {
-    width: 100%;
   }
 }
